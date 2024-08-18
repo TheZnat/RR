@@ -1,2 +1,5 @@
 export const INCREMENT = "INCREMENT_LIKES";
 export const DECREMENT = "DECREMENT_LIKES";
+export const INPUT_TEXT = "INPUT_TEXT";
+export const COMMENT_CREATE = "COMMENT_CREATE";
+

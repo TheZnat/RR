@@ -1,5 +1,8 @@
 import "./App.css";
-import Likes from "./Likes";
+import Comments from "./Components/Comments";
+import Likes from "./Components/Likes";
+import Title from "./Components/Title";
+
 
 function App() {
   return (
@@ -8,8 +11,10 @@ function App() {
         <div className="card">
           <div className="card-image">
             <img src="./sea.jpg" alt="surfing" />
+            <Title />
             <Likes />
           </div>
+          <Comments/>
         </div>
       </div>
     </div>
