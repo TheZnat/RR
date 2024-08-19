@@ -1,17 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SingleComments from "./SingleComments";
 import uniqid from "uniqid";
 import { useDispatch, useSelector } from "react-redux";
-import { commentCreate } from "../redux/action";
+import { commentCreate, commentsLoad } from "../redux/action";
 
 const Comments = (props) => {
-  const [textComment, setTextComment] = useState("");
-  const dispatch = useDispatch();
-
   const comments = useSelector((state) => {
     const { commentReducer } = state;
-    return commentReducer.comments;
+    return commentReducer.comments || [];
   });
+
+  const [textComment, setTextComment] = useState("");
+  const dispatch = useDispatch();
 
   const handlerInput = (e) => {
     setTextComment(e.target.value);
@@ -22,6 +22,10 @@ const Comments = (props) => {
     const id = uniqid();
     dispatch(commentCreate(textComment, id));
   };
+
+  useEffect(() => {
+    dispatch(commentsLoad());
+  }, []);
 
   return (
     <div className="card-comments">
